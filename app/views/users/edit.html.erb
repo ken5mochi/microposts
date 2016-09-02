@@ -15,7 +15,8 @@
       <%= f.text_area :profile , class: 'form-control' %>
 
       <%= f.label :location %>
-      <%= f.text_field :location , class: 'form-control' %>
+      <% location_list = %w(北海道 東北 関東 中部 近畿 中国 四国 九州 海外) %>
+      <%= f.select :location , location_list , { include_blank: '選択してください' } , class: 'form-control' %>
 
       <%= f.submit "Change my profile", class: "btn btn-large btn-primary" %>
     <% end %>
