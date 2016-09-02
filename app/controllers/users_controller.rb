@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, except: [:new, :create, :show]
-  before_action :set_current_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :user_check, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])
   end
   
   def new
@@ -21,15 +20,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
-      flash.now[:success] = "プロフィールを編集しました"
-      render 'edit'
-      # redirect_to @user
+      flash[:success] = "プロフィールを編集しました"
+      redirect_to @user
     else
       flash.now[:danger] = "プロフィールの更新に失敗しました"
       render 'edit'
@@ -42,8 +38,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :profile, :location, :password, :password_confirmation)
   end
 
-  def set_current_user
-    @user = current_user
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_check
+    unless current_user == @user
+      flash[:success] = "URLが不正です"
+      redirect_to root_path
+    end
   end
 
 end
