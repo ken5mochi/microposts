@@ -9,6 +9,11 @@
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
+    <div>
+      <%= link_to "#{@user.following_relationships.count} followings ", followings_user_path %>
+      /
+      <%= link_to "#{@user.follower_relationships.count} followers ", followers_user_path %>
+    </div>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
