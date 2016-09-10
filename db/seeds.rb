@@ -5,6 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-100.times do |t|
-  Micropost.create(user_id: 1, content: "これは #{t} 番目のコンテンツ")
+10.times do |t|
+  Micropost.create(user_id: 1, content: "これは #{User.find(1).name} の #{t} 番目のコンテンツ")
+  Micropost.create(user_id: 2, content: "これは #{User.find(2).name} の #{t} 番目のコンテンツ")
+end
+
+10.times do |t|
+  User.create(name: "ユーザー#{t}号")
 end
