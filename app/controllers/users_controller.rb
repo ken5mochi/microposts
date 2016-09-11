@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
   before_action :user_check, only: [:edit, :update]
 
+  def index
+    @user = current_user
+    @users = User.all.order(created_at: :desc)
+  end
+
   def show
     @microposts = @user.microposts.order(created_at: :desc).page(params[:page])
   end

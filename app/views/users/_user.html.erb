@@ -1,5 +1,10 @@
 <li id="user-<%= user.id %>">
   <%= link_to gravatar_for(user, size: 20), user %>
   <span class="name"><%= link_to user.name, user %></span>
+  (
+  following:<%= user.following_relationships.count %>
+  /
+  follower:<%= user.follower_relationships.count %>
+  )
   <span class="profile"><%= user.profile %></span>
 </li>
