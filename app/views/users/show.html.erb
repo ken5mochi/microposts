@@ -16,9 +16,27 @@
     </div>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+      <div class="raw">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <%= page_entries_info @microposts %>
+          </div>
+        </div>
+      </div>
+      <div class="raw">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <%= paginate @microposts %>
+          </div>
+        </div>
+      </div>
+      <div class="raw">
+        <div class="col-md-12">
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
