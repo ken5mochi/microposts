@@ -48,6 +48,10 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
+    carrierwave (1.0.0.beta)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     choice (0.2.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -191,6 +195,7 @@ DEPENDENCIES
   awesome_print
   bcrypt (~> 3.1.7)
   bootstrap-sass
+  carrierwave
   coffee-rails (~> 4.1.0)
   hirb
   hirb-unicode

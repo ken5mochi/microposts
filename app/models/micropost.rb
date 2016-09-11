@@ -4,6 +4,8 @@ class Micropost < ActiveRecord::Base
   has_many :bookmarks
   has_many :bookmarking_users, through: :bookmarks, source: :user
 
+  mount_uploader :photo, PhotoUploader
+
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
 
