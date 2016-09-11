@@ -1,15 +1,18 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content"><%= micropost.content %></span>
-  <%= image_tag micropost.photo.url, size: '300x300' if micropost.photo? %>
+  <span class="content">
+    <%= simple_format(h(micropost.content)) %>
+    <%= image_tag micropost.photo.url, width: 300 if micropost.photo? %>
+  </span>
   <span class="timestamp">
 
     <% if  micropost.bookmarked_by?(current_user) %>
       ❤️ <%= micropost.bookmarks.count %>
       <%= form_for(micropost.bookmarks.find_by(user_id: current_user.id),
         html: { method: :delete } ) do |f| %>
-        <%= f.submit "del", class: "btn" %>
+        <%= f.submit "remove from bookmarks", class: "btn btn-xs" %>
+        <!--<button type="button" class="btn btn-default">❤️</button>-->
       <% end %>
     <% else %>
       ♡ <%= micropost.bookmarks.count %>
@@ -17,7 +20,7 @@
         <%= form_for(micropost.bookmarks.build) do |f| %>
           <div><%= hidden_field_tag :user_id, current_user.id %></div>
           <div><%= hidden_field_tag :micropost_id, micropost.id %></div>
-          <%= f.submit "add", class: "btn btn-primary" %>
+          <%= f.submit "add to bookmarks", class: "btn btn-primary btn-xs" %>
         <% end %>
       <% end %>
     <% end %>

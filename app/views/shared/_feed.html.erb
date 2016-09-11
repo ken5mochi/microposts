@@ -1,4 +1,8 @@
 <% if @feed_items.any? %>
+  <div style="text-align: right">
+    <%= page_entries_info @feed_items %><br>
+    <%= paginate @feed_items %>
+  </div>
   <ol class="microposts">
     <%= render @feed_items %>
   </ol>
