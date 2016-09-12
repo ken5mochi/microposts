@@ -5,11 +5,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production?
-    include Cloudinary::CarrierWave
-  else
+  # if Rails.env.production?
+  #   include Cloudinary::CarrierWave
+  # else
     storage :file
-  end
+  # end
 
   def public_id
     model.id
