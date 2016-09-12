@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :bookmarks, :followings, :followers]
   before_action :user_check, only: [:edit, :update]
 
   def index
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts.order(created_at: :desc).page(params[:page])
+    @feed_items = @user.microposts.order(created_at: :desc).page(params[:page])
   end
   
   def new
@@ -36,6 +36,10 @@ class UsersController < ApplicationController
       flash.now[:danger] = "プロフィールの更新に失敗しました"
       render 'edit'
     end
+  end
+
+  def bookmarks
+    @feed_items = @user.bookmarking_microposts.order(created_at: :desc).page(params[:page])
   end
 
   def followings

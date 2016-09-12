@@ -10,11 +10,7 @@
     <%= render 'shared/user_nav' %>
   </aside>
   <div class="col-md-8">
-    <h3><%= @user.name %>'s Followers</h3>
-    <% if @users.any? %>
-      <ol class="followers">
-        <%= render @users %>
-      </ol>
-    <% end %>
+    <h3><%= @user.name %>'s Bookmarks</h3>
+    <%= render 'shared/feed' %>
   </div>
 </div>

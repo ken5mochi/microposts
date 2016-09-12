@@ -6,10 +6,12 @@
         <%= @user.name %>
       </h1>
     </section>
+    <%= render 'follow_form' if logged_in? %>
+    <%= render 'shared/user_nav' %>
   </aside>
   <div class="col-md-8">
+    <h3><%= @user.name %>'s Followings</h3>
     <% if @users.any? %>
-      <h3>Followings (<%= @user.following_relationships.count %>)</h3>
       <ol class="followings">
         <%= render @users %>
       </ol>

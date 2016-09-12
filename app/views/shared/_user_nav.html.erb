@@ -1,0 +1,9 @@
+<div>
+  <%= link_to "#{@user.following_relationships.count} followings ", followings_user_path %>
+  /
+  <%= link_to "#{@user.follower_relationships.count} followers ", followers_user_path %>
+  /
+  <%= link_to "#{@user.microposts.count} microposts", user_path %>
+  /
+  <%= link_to "#{@user.bookmarks.count} bookmarks", bookmarks_user_path %>
+</div>

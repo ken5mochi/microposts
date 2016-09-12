@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :bookmarks
     end
   end
   resources :microposts
