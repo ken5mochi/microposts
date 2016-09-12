@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hfq8ddusd
+  api_key: '266788396735266'
+  api_secret: 6qD13IjovKk62zseZdR79zuzz1Q
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hfq8ddusd
+  api_key: '266788396735266'
+  api_secret: 6qD13IjovKk62zseZdR79zuzz1Q
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hfq8ddusd
+  api_key: '266788396735266'
+  api_secret: 6qD13IjovKk62zseZdR79zuzz1Q
+  enhance_image_tag: true
+  static_image_support: false
