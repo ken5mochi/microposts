@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'cloudinary'
-# gem 'rmagick'
+gem 'rmagick'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
