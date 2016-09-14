@@ -1,0 +1,7 @@
+<div id="bookmark_form-<%= micropost.id %>">
+  <% if  micropost.bookmarked_by?(current_user) %>
+    <%= render 'microposts/bookmark_del', micropost: micropost %>
+  <% else %>
+    <%= render 'microposts/bookmark_add', micropost: micropost %>
+  <% end %>
+</div>

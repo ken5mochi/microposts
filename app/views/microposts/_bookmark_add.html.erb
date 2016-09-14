@@ -1,0 +1,8 @@
+♡ <%= micropost.bookmarks.count %>
+<% unless micropost.user == current_user %>
+  <%= form_for(micropost.bookmarks.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :user_id, current_user.id %></div>
+    <div><%= hidden_field_tag :micropost_id, micropost.id %></div>
+    <%= f.submit "add to bookmarks", class: "btn btn-primary btn-xs" %>
+  <% end %>
+<% end %>

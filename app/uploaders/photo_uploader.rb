@@ -7,18 +7,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     include Cloudinary::CarrierWave
+    process :convert => 'png'
+    process :tags => ['mochi', "#{Time.now.strftime("%a")}", "#{Time.now.strftime("%b")}"]
+    process :resize_to_limit => [300, 300]
+    def public_id
+      model.id
+    end
   else
     storage :file
   end
 
-  def public_id
-    model.id
-  end
   # storage :fog
 
 
-  process :convert => 'png'
-  process :tags => ['mochi', "#{Time.now.strftime("%a")}", "#{Time.now.strftime("%b")}"]
 
   # version :standard do
   #   process :resize_to_fill => [100, 150, :north]
@@ -70,7 +71,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
 
   # 画像の上限を700pxにする
-  process :resize_to_limit => [300, 300]
 
   # 保存形式をJPGにする
   # process :convert => 'jpg'

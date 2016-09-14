@@ -1,0 +1,5 @@
+❤️ <%= micropost.bookmarks.count %>
+<%= form_for(micropost.bookmarks.find_by(user_id: current_user.id),
+  method: :delete , remote: true ) do |f| %>
+  <%= f.submit "remove from bookmarks", class: "btn btn-xs" %>
+<% end %>
